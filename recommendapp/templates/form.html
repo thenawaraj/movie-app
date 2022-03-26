@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap');
+
+  body{
+   font-family: 'Poppins', sans-serif;
+
+   }
+    .bg{
+    background-image: url({% static "assets/images14.jpg" %});
+    background-size: 1537px 820px;
+    }
+
+   .form-home{
+    padding: 50px;
+    display: flex;
+    justify-content:center;
+
+    }
+
+    h2{
+    display:flex;
+    justify-content:center;
+    color:#fe2c55;
+    margin-bottom:3px;
+    }
+
+    input{
+    width: 25%;
+    outline: none;
+    border: none;
+    }
+
+   .input-text{
+   padding: 15px;
+   border:1px solid #fe2c55;
+    }
+
+   .search-button{
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+    background-color: #fe2c55;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    }
+
+    .main-home{
+<!--    background-color:green;-->
+
+    }
+    </style>
+</head>
+<body class="bg" >
+    <div class="main-home">
+
+     <h2>Movie Recommendation System</h2>
+  <form  action="/read_input" method="post" enctype= multipart/form-data >
+          {% csrf_token %}
+      <div class="form-home">
+          <input class="input-text" type="text" name="val" placeholder="Enter keywords"/>
+      <button  class="search-button" type="submit">Search</button>
+      </div>
+  </form>
+
+
+    </div>
+
+</body>
+</html>

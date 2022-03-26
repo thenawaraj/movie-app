@@ -1,0 +1,61 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Movie</title>
+    </head>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap');
+    body{
+   font-family: 'Poppins', sans-serif;
+     }
+
+    .movie-wrapper{
+    display:flex;
+    <!--border:5px solid red;-->
+    }
+
+    .image-area img{
+    width:150px;
+    cursor:pointer;
+    }
+
+    .title-area{
+    display:flex;
+    align-items:center;
+    }
+
+    .movie-card{
+    padding:10px;
+    display:grid;
+    <!--background-color:green;-->
+    }
+    .title-area{
+    font-size:16px;
+    color:#fe2c55;
+    font-weight:500;
+    }
+    </style>
+
+    <body>
+    <div class="movie-wrapper">
+        {% for movie in data %}
+        <div class="movie-card">
+        <div class="image-area">
+                <img src="{{movie.image}}" alt="" srcset="">
+        </div>
+        <div class="title-area">
+                <p>{{movie.title}}</p>
+        </div>
+        <div class="crew-area">
+                <p>{{movie.crew}}</p>
+        </div>
+        <div class="genre-area">
+                <p>{{movie.genre}}</p>
+        </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+</body>
+</html>
