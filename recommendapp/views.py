@@ -32,8 +32,14 @@ def Make_Recommend():
 
 
 def input_form(request):
-    print("value")
-    return render(request, "form.html")
+    # print("value")
+    # using json fle to display data in home screen
+    with open('F:/PROJECT MOVIE/movie-recommendation-app/recommendapp/datasets.json') as file_object:
+        movie_datas = json.load(file_object)[0:24]
+        context = {
+            'data': movie_datas
+        }
+        return render(request, 'form.html', context)
 
 
 def read_input(request):
@@ -59,7 +65,7 @@ def read_input(request):
 
             print("Sorting the movie based on similarity score")
             sorted_similar_movies = sorted(similarity_score, key=lambda x: x[1], reverse=True)
-            display = sorted_similar_movies[1:7]
+            display = sorted_similar_movies[1:8]
             # print(sorted_similar_movies)
             # print("Movie suggested for you are:\n")
             i = 1
@@ -86,8 +92,8 @@ def print_hi(request):
     # movie_data = pd.read_json('F:/movieapp/recommendapp/recommendapp/movie_datasets.json')
     with open('F:/PROJECT MOVIE/movie-recommendation-app/recommendapp/datasets.json') as file_object:
         movie_datas = json.load(file_object)
-        print("movie")
+        print(movie_datas)
         context = {
             'data': movie_datas
         }
-        return render(request, 'home.html', context)
+        return render(request, 'form.html', context)

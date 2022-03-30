@@ -19,7 +19,6 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('moviename/', views.print_hi),
     path('', views.input_form),
     path('read_input', views.read_input)
 

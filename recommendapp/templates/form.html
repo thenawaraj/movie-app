@@ -6,14 +6,22 @@
     <title>Form</title>
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap');
-
+    :root {
+    --main-color:#c0392b;
+    --body-bg: #181616;
+    --box-bg: #221f1f;
+    --text-color: #ffffff;
+}
   body{
    font-family: 'Poppins', sans-serif;
+  background-color: var(--body-bg);
+    color: var(--text-color);
 
    }
     .bg{
-    background-image: url({% static "assets/images14.jpg" %});
-    background-size: 1537px 820px;
+<!--    background-image: url({% static "assets/images14.jpg" %});-->
+<!--    background-size: 1537px 820px;-->
+<!--        background-color:red;-->
     }
 
    .form-home{
@@ -50,26 +58,64 @@
     font-family: 'Poppins', sans-serif;
     }
 
-    .main-home{
-<!--    background-color:green;-->
+.movie-wrapper{
+display:flex;
+justify-content:space-evenly;
+flex-wrap:wrap;
+}
+.movie-card{
+<!--background-color :red;-->
+height:100px;
+width :20%;
+margin-top:1rem;
+border-radius:1rem;
+box-shadow:0px 8px 24px rgba(149, 157, 165, 0.2) ;
+display:flex;
+justify-content:center;
+flex-direction:column;
+align-items:center;
+padding:20px;
+}
+ .image-area img{
+    width:130px;
+    cursor:pointer;
+ }
 
-    }
     </style>
 </head>
-<body class="bg" >
-    <div class="main-home">
+<!--<body class="bg">-->
+<body>
+<div class="main-home">
 
-     <h2>Movie Recommendation System</h2>
-  <form  action="/read_input" method="post" enctype= multipart/form-data >
-          {% csrf_token %}
-      <div class="form-home">
-          <input class="input-text" type="text" name="val" placeholder="Enter keywords"/>
-      <button  class="search-button" type="submit">Search</button>
-      </div>
-  </form>
+    <h2>Movie Recommendation System</h2>
+    <form action="/read_input" method="post" enctype=multipart/form-data>
+        {% csrf_token %}
+        <div class="form-home">
+            <input class="input-text" type="text" name="val" placeholder="Enter keywords"/>
+            <button class="search-button" type="submit">Search</button>
+        </div>
+    </form>
+    <div class="movie-wrapper">
 
+        {% for movie in data %}
+
+        <div class="movie-card">
+        <div class="image-area">
+                <img src="{{movie.image}}" alt="" srcset="">
+        </div>
+        <div class="title-area">
+                <p>{{movie.title}}</p>
+        </div>
+        <div class="genre-area">
+                <p>{{movie.genre}}</p>
+        </div>
 
     </div>
+        {% endfor %}
+
+    </div>
+
+</div>
 
 </body>
 </html>
