@@ -63,12 +63,12 @@ def read_input(request):
         else:
             print("Finding similarity of the best match movies")
             similarity_score = list(enumerate(similarity[index_of_movie]))
-            print(similarity_score)
+            # print(similarity_score)
 
             print("Sorting the movie based on similarity score")
             sorted_similar_movies = sorted(similarity_score, key=lambda x: x[1], reverse=True)
             display = sorted_similar_movies[1:8]
-            print(sorted_similar_movies)
+            # print(sorted_similar_movies)
             # print("Movie suggested for you are:\n")
             i = 1
             required_movie_array = []
