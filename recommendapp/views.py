@@ -5,6 +5,7 @@ import pandas as pd
 import difflib
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+from django.contrib.auth.decorators import login_required
 
 # Reading csv file
 movie_data = pd.read_csv('F:/PROJECT MOVIE/movie-recommendation-app/recommendapp/movie_datasets.csv')
@@ -12,7 +13,7 @@ movie_data = pd.read_csv('F:/PROJECT MOVIE/movie-recommendation-app/recommendapp
 
 def Make_Recommend():
     selected_features = ['genre', 'crew']
-    # print(selected_features)
+    print(selected_features)
 
     combined_features = movie_data['genre'] + ' ' + ['crew']
     # print(combined_features)
@@ -42,6 +43,7 @@ def input_form(request):
         return render(request, 'form.html', context)
 
 
+@login_required(login_url='login')
 def read_input(request):
     similarity = Make_Recommend()
     x = request.POST['val']
@@ -61,12 +63,12 @@ def read_input(request):
         else:
             print("Finding similarity of the best match movies")
             similarity_score = list(enumerate(similarity[index_of_movie]))
-            # print(similarity_score)
+            print(similarity_score)
 
             print("Sorting the movie based on similarity score")
             sorted_similar_movies = sorted(similarity_score, key=lambda x: x[1], reverse=True)
             display = sorted_similar_movies[1:8]
-            # print(sorted_similar_movies)
+            print(sorted_similar_movies)
             # print("Movie suggested for you are:\n")
             i = 1
             required_movie_array = []

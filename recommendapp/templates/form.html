@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Form</title>
+    <title>Movie Recommendation System</title>
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap');
     :root {
@@ -81,10 +81,52 @@ padding:20px;
     cursor:pointer;
  }
 
+.button-area{
+position:absolute;
+left:1200px;
+top:120px;
+}
+
+.login-btn{
+padding:10px;
+border:none;
+margin-left:10px;
+width:90px;
+cursor:pointer;
+background-color: #fe2c55;
+color: #ffffff;
+font-family: 'Poppins', sans-serif;
+}
+
+ .sign-in-btn{
+padding:10px;
+border:none;
+width:90px;
+cursor:pointer;
+background-color: #fe2c55;
+color: #ffffff;
+font-family: 'Poppins', sans-serif;
+
+ }
+
+ .button-area a{
+ text-decoration:none;}
+
     </style>
 </head>
 <!--<body class="bg">-->
 <body>
+{% if user.is_authenticated %}
+<div class="button-area">
+    <a type="button" href="/logout" class="login-btn">Log out</a>
+    {{user}}
+</div>
+{% else %}
+<div class="button-area">
+    <a type="button" href="/login" class="sign-in-btn" >Sign In</a>
+    <a type="button" href="/signup" class="login-btn">Sign Up</a>
+</div>
+{% endif %}
 <div class="main-home">
 
     <h2>Movie Recommendation System</h2>
@@ -116,6 +158,8 @@ padding:20px;
     </div>
 
 </div>
+
+
 
 </body>
 </html>
