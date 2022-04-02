@@ -9,3 +9,5 @@ This program is a prototype of a content-based movie recommendation system. This
 # Snapshot
 
 ![image](https://user-images.githubusercontent.com/84611644/159121246-baf0e728-e681-4426-af6a-6e5546d54040.png)
+
+##Features
